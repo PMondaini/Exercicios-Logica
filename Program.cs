@@ -16,13 +16,11 @@ namespace Laços_Condicionais__Laços_Numéricos__Vetores_e_Matrizes
             
             if (matriz.Length % 2 == 0)
             {
-                string troca = ""; // 
-                for (int i=0; i < palavra.Length; i+=2) //não pensei em usar o +=2. Tentei com ++
+    
+                for (int i = 0; i < matriz.GetUpperBound(0) ; i+=2) ////sabia que precisava usar o +=2, mas não pensei em usar aqui. fiquei bastante tempo tentando usar dentro do bloco
                 {
-                    troca += palavra[i + 1];       //
-                    troca += palavra[i];           //
-                    Console.Write(palavra[i+1]);   //
-                    Console.Write(palavra[i]);     //precisei copiar praticamente tudo. o máximo que consegui fazendo pela matriz foi trocar as letras do meio, mas nunca os pares do começo e do fim
+                    Console.Write(matriz[i+1]); //
+                    Console.Write(matriz[i]);   //dei uma lida na reslução e adaptei. Antes eu conseguia trocar as letras do meio, mas nunca os pares do início e do fim da palavra
                 }
             }    
             else
@@ -40,22 +38,15 @@ namespace Laços_Condicionais__Laços_Numéricos__Vetores_e_Matrizes
             matrizInversa = palavra.ToCharArray();
             Array.Reverse(matrizInversa);          
 
-            if (matriz.Length != matrizInversa.Length)
+            for (int l = 0 ; l <= matriz.GetUpperBound(0) ; l++ )
             {
-                comparacao = false;
-            }
-            else
-            {
-                for (int l = 0 ; l <= matriz.GetUpperBound(0) ; l++ )
+                if (matriz[l] != matrizInversa[l])
                 {
-                    if (matriz[l] != matrizInversa[l])
-                    {
-                        comparacao = false;
-                    }
-                    else
-                    {
-                        comparacao = true;
-                    }
+                    comparacao = false;
+                }
+                else
+                {
+                    comparacao = true;
                 }
             }
             Console.WriteLine(comparacao ? "\nÉ palíndromo" : "\nNão é palíndromo");
@@ -71,7 +62,7 @@ namespace Laços_Condicionais__Laços_Numéricos__Vetores_e_Matrizes
                     if (palavra[k] == retorno[r])
                     {
                         achouLetra = true;
-                        break;//break para sair do for, pois se ele ja achou a letra nao faz sentido continuar olhando
+                        break;
                     }
                 }
                 if (!achouLetra)
